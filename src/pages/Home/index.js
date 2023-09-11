@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import { useEffect, useState } from "react";
 import {
   Container, InputSearchContainer, Header, ListContainer, Card,
 } from "./styles";
@@ -12,6 +13,21 @@ import trash from "../../assets/images/icons/trash.svg";
 // import Modal from "../../components/Modal";
 
 export default function Home() {
+  const [contacts, setContacts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/contacts")
+      .then(async (response) => {
+        const json = await response.json();
+        setContacts(json);
+      });
+    try {
+
+    } catch (error) {
+      console.log("erro", error);
+    }
+  }, []);
+
   return (
     <Container>
       {/* <Loader /> */}
@@ -21,7 +37,10 @@ export default function Home() {
       </InputSearchContainer>
 
       <Header>
-        <strong>1 contato</strong>
+        <strong>
+          {contacts.length}
+          {contacts.length === 1 ? " contato" : " contatos"}
+        </strong>
         <Link to="/new">Novo contato</Link>
       </Header>
 
@@ -34,25 +53,36 @@ export default function Home() {
         </header>
       </ListContainer>
 
-      <Card>
-        <div className="info">
-          <div className="contact-name">
-            <strong>Rafael Macchi</strong>
-            <small>instagram</small>
+      {contacts.map((contact) => (
+        <Card key={contact.id}>
+          <div className="info">
+            <div className="contact-name">
+              <strong>{contact.name}</strong>
+              {contact.category_name && (
+                <small>{contact.category_name}</small>
+              )}
+            </div>
+            <span>{contact.email}</span>
+            <span>{contact.phone}</span>
           </div>
-          <span>rmacchi@devacademy.com.br</span>
-          <span>(19) 99999-99999</span>
-        </div>
 
-        <div className="actions">
-          <Link to="/edit/123">
-            <img src={edit} alt="Edit" />
-          </Link>
-          <button type="button">
-            <img src={trash} alt="Delete" />
-          </button>
-        </div>
-      </Card>
+          <div className="actions">
+            <Link to={`/edit/${contact.id}`}>
+              <img src={edit} alt="Edit" />
+            </Link>
+            <button type="button">
+              <img src={trash} alt="Delete" />
+            </button>
+          </div>
+        </Card>
+      ))}
     </Container>
   );
 }
+
+// SOP -> Same Origin Policy -> Politica de mesma origem
+// CORS -> Cross-Origin Resource Sharing -> Compartilhamento de recursos entre origens cruzadas
+// Origem: protocolo://domínio:porta
+
+// Saida: http://localhost:3000
+// Destino: http://localhost:3001

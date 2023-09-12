@@ -50,11 +50,9 @@ export const Header = styled.header`
     }
 `;
 
-export const ListContainer = styled.div`
- margin-top: 24px;
-
- header {
-     margin-bottom: 8px;
+export const ListHeader = styled.header`
+    margin-top: 24px;
+    margin-bottom: 8px;
 
      button {
         background: transparent;
@@ -62,13 +60,17 @@ export const ListContainer = styled.div`
         display: flex;
         align-items: center;
 
-    span {
+        span {
         margin-right: 8px;
         font-weight: bold;
         color: ${({ theme }) => theme.colors.primary.main};
+        }
+
+        img {
+            transform: ${({ orderBy }) => (orderBy === "asc" ? "rotate(180deg)" : "rotate(0deg)")};
+            transition: transform 0.3s ease-in;
+        }
     }
-    }
-}
 `;
 
 export const Card = styled.div`

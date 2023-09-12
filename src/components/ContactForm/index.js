@@ -101,7 +101,7 @@ export default function ContactForm({ buttonLabel }) {
         >
           <option value="">Rede Social</option>
           <option value="instagram">Instagram</option>
-          <option value="twitter/x">Twitter / X</option>
+          <option value="twitter">Twitter</option>
           <option value="linkedin">LinkedIn</option>
           <option value="facebook">Facebook</option>
         </Select>

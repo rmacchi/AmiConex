@@ -9,9 +9,9 @@ import arrow from "../../assets/images/icons/arrow.svg";
 import edit from "../../assets/images/icons/edit.svg";
 import trash from "../../assets/images/icons/trash.svg";
 
-import delay from "../../utils/delay";
-
 import Loader from "../../components/Loader";
+import ContactsService from "../../services/ContactsService";
+
 // import Modal from "../../components/Modal";
 
 export default function Home() {
@@ -29,14 +29,9 @@ export default function Home() {
       try {
         setIsLoading(true);
 
-        const response = await fetch(
-          `http://localhost:3001/contacts?orderBy=${orderBy}`,
-        );
+        const contactsList = await ContactsService.listContacts(orderBy);
 
-        await delay(500);
-
-        const json = await response.json();
-        setContacts(json);
+        setContacts(contactsList);
       } catch (error) {
         console.log("erro", error);
       } finally {
@@ -79,7 +74,7 @@ export default function Home() {
       </Header>
 
       {filteredContacts.length > 0 && (
-        <ListHeader orderBy={orderBy}>
+        <ListHeader orderby={orderBy}>
           <button type="button" onClick={handleToggleOrderBy}>
             <span>Nome</span>
             <img src={arrow} alt="Arrow" />

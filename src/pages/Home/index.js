@@ -33,7 +33,7 @@ export default function Home() {
 
         setContacts(contactsList);
       } catch (error) {
-        console.log("erro", error);
+        console.log("Caiu no Catch!", error);
       } finally {
         setIsLoading(false);
       }
@@ -74,7 +74,7 @@ export default function Home() {
       </Header>
 
       {filteredContacts.length > 0 && (
-        <ListHeader orderby={orderBy}>
+        <ListHeader orderBy={orderBy}>
           <button type="button" onClick={handleToggleOrderBy}>
             <span>Nome</span>
             <img src={arrow} alt="Arrow" />

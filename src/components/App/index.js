@@ -13,6 +13,8 @@ import Home from "../../pages/Home";
 import NewContact from "../../pages/NewContact";
 import EditContact from "../../pages/EditContact";
 
+import ToastContainer from "../Toast/ToastContainer";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +34,7 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyles />
+      <ToastContainer />
 
       <Container>
         <Header />

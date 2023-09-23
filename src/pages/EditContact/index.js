@@ -10,6 +10,8 @@ import ContactsService from "../../services/ContactsService";
 
 export default function EditContact() {
   const [isLoading, setIsLoading] = useState(true);
+  const [contactName, setContactName] = useState("");
+
   const contactFormRef = useRef("valor inicial");
 
   const { id } = useParams();
@@ -24,6 +26,7 @@ export default function EditContact() {
 
         contactFormRef.current.setFieldsValues(contact);
         setIsLoading(false);
+        setContactName(contact.name);
       } catch {
         navigate("/");
         toast({
@@ -43,8 +46,9 @@ export default function EditContact() {
   return (
     <>
       <Loader isLoading={isLoading} />
+
       <PageHeader
-        title="Editar Rafael Macchi"
+        title={isLoading ? "Carregando..." : `Editar ${contactName}`}
       />
 
       <ContactForm

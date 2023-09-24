@@ -14,6 +14,7 @@ export default function Modal({
   onCancel,
   onConfirm,
   visible,
+  isLoading,
 }) {
   if (!visible) {
     return null;
@@ -33,6 +34,7 @@ export default function Modal({
             type="button"
             className="cancel-button"
             onClick={onCancel}
+            disabled={isLoading}
           >
             {cancelLabel}
           </button>
@@ -40,6 +42,7 @@ export default function Modal({
             type="button"
             danger={danger}
             onClick={onConfirm}
+            isLoading={isLoading}
           >
             {confirmLabel}
           </Button>
@@ -59,10 +62,12 @@ Modal.propTypes = {
   confirmLabel: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 Modal.defaultProps = {
   danger: false,
+  isLoading: false,
   cancelLabel: "cancelar",
   confirmLabel: "confirmar",
 };

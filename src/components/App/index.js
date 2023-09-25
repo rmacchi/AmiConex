@@ -11,7 +11,7 @@ import { Container } from "./styles";
 
 import Home from "../../pages/Home";
 import NewContact from "../../pages/NewContact";
-import { Container as EditContact } from "../../pages/EditContact";
+import EditContact from "../../pages/EditContact";
 
 import ToastContainer from "../Toast/ToastContainer";
 

@@ -49,7 +49,7 @@ export default function useHome() {
     setSearchTerm(event.target.value);
   }
 
-  function handleTyAgain() {
+  function handleTryAgain() {
     loadContacts();
   }
 
@@ -95,7 +95,7 @@ export default function useHome() {
     handleCloseDeleteModal,
     handleConfirmDeleteContact,
     handleChangeSearchTerm,
-    handleTyAgain,
+    handleTryAgain,
     hasError,
     isLoading,
     orderBy,

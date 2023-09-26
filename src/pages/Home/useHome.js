@@ -40,28 +40,28 @@ export default function useHome() {
     loadContacts();
   }, [loadContacts]);
 
-  function handleToggleOrderBy() {
+  const handleToggleOrderBy = useCallback(() => {
     setOrderName(
       (prevState) => (prevState === "asc" ? "desc" : "asc"),
     );
-  }
+  }, []);
 
-  function handleChangeSearchTerm(event) {
+  const handleChangeSearchTerm = useCallback((event) => {
     setSearchTerm(event.target.value);
-  }
+  }, []);
 
-  function handleTryAgain() {
+  const handleTryAgain = useCallback(() => {
     loadContacts();
-  }
+  }, [loadContacts]);
 
-  function handleDeleteContact(contact) {
+  const handleDeleteContact = useCallback((contact) => {
     setContactBeingDeleted(contact);
     setIsDeleteModalVisible(true);
-  }
-  function handleCloseDeleteModal() {
+  }, []);
+
+  const handleCloseDeleteModal = useCallback(() => {
     setIsDeleteModalVisible(false);
-    setContactBeingDeleted(null);
-  }
+  }, []);
 
   async function handleConfirmDeleteContact() {
     try {

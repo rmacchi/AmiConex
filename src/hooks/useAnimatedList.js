@@ -18,11 +18,17 @@ export default function useAnimatedList() {
     );
   }, []);
 
+  const renderList = useCallback((renderItem) => (
+    items.map((item) => renderItem(item, {
+      isLeaving: pendingRemovalItemsIds.includes(item.id),
+    }))
+  ), [items, pendingRemovalItemsIds]);
+
   return {
     items,
     setItems,
-    pendingRemovalItemsIds,
     handleRemoveItem,
     handleAnimationEnd,
+    renderList,
   };
 }

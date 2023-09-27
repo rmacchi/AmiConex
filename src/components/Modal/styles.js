@@ -45,7 +45,7 @@ export const Container = styled.div`
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
     animation: ${scaleIn} 0.4s;
 
-    ${({ isLiving }) => isLiving && css`animation: ${scaleOut} 0.3s forwards;`}
+    ${({ isLeaving }) => isLeaving && css`animation: ${scaleOut} 0.3s forwards;`}
 
     > h1 {
         font-size: 22px;

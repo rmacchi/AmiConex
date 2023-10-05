@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
 
 import { Overlay, Container, Footer } from "./styles";
@@ -10,12 +11,12 @@ export default function Modal({
   danger,
   title,
   children,
-  cancelLabel,
-  confirmLabel,
+  cancelLabel = "cancelar",
+  confirmLabel = "confirmar",
   onCancel,
   onConfirm,
   visible,
-  isLoading,
+  isLoading = false,
 }) {
   const { shouldRender, animatedElementRef } = useAnimatedUnmount(visible);
 
@@ -58,7 +59,7 @@ export default function Modal({
 }
 
 Modal.propTypes = {
-  danger: PropTypes.bool,
+  danger: PropTypes.func,
   visible: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
@@ -67,11 +68,4 @@ Modal.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
-};
-
-Modal.defaultProps = {
-  danger: false,
-  isLoading: false,
-  cancelLabel: "cancelar",
-  confirmLabel: "confirmar",
 };

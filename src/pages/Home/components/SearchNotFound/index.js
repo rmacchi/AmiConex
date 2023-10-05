@@ -17,5 +17,5 @@ export default function SearchNotFound({ onSearchTerm }) {
 }
 
 SearchNotFound.propTypes = {
-  onSearchTerm: PropTypes.func.isRequired,
+  onSearchTerm: PropTypes.string.isRequired,
 };

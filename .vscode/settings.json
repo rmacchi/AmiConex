@@ -1,0 +1,53 @@
+{
+  // editor
+  "editor.wordWrap": "on",
+  "editor.fontSize": 15,
+  "editor.lineHeight": 23,
+  "editor.tabSize": 2,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "files.autoSave": "off",
+
+  // Editor settings
+  "editor.fontFamily": "Fira Code,  JetBrains Mono",
+  "editor.fontLigatures": true,
+  "editor.rulers": [80, 120],
+  "editor.parameterHints.enabled": false,
+  "editor.renderLineHighlight": "gutter",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+
+  // explorer
+  "explorer.compactFolders": false,
+
+  // workbench
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "GitHub Dark",
+  "workbench.editor.labelFormat": "short",
+  "workbench.startupEditor": "newUntitledFile",
+
+  /* prettier
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.enable": true,
+    "prettier.singleQuote": false,
+    "prettier.tabWidth": 2,
+    "prettier.semi": false,*/
+
+  //VSCode stuff
+  "terminal.integrated.shell.osx": "/bin/zsh",
+
+  // terminal
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "source": "Git Bash"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "cSpell.language": "en,pt-BR"
+}

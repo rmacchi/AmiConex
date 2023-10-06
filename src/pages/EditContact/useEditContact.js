@@ -31,17 +31,16 @@ export default function useEditContact() {
           setContactName(contact.name);
         });
       } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") {
-          return;
-        }
+        if (!(error instanceof DOMException && error.name === "AbortError")) {
+          safeAsyncAction(() => {
+            navigate("/", { replace: true });
 
-        safeAsyncAction(() => {
-          navigate("/");
-          toast({
-            type: "danger",
-            text: "Contato não encontrado!",
+            toast({
+              type: "danger",
+              text: "Contato não encontrado!",
+            });
           });
-        });
+        }
       }
     }
 
